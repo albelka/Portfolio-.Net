@@ -7,6 +7,7 @@ using RestSharp.Authenticators;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
 
 namespace PortfolioCodeReview.Models
 {
@@ -14,7 +15,7 @@ namespace PortfolioCodeReview.Models
     {
         public string HtmlUrl { get; set; }
 
-    public static List<Repo> GetRepos()
+    public static List<JObject> GetRepos()
     {
         var client = new RestClient("https://api.github.com");
         var request = new RestRequest("search/repositories?q=user:albelka&stars:1..2&order=desc&?client_id=" + EnvironmentVariables.ClientId + "&client_secret=" + EnvironmentVariables.ClientSecret, Method.GET);
@@ -26,7 +27,8 @@ namespace PortfolioCodeReview.Models
         }).Wait();
             Debug.WriteLine(response);
         JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(response.Content);
-        var repoList = JsonConvert.DeserializeObject<List<Repo>>(response.Content);
+        List<JObject> repoList = JsonConvert.DeserializeObject<List<JObject>>(jsonResponse["items"].ToString());
+
         return repoList;
 
     }
