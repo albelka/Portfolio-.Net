@@ -15,19 +15,21 @@ Clone this repository: https://github.com/albelka/Portfolio-.Net
 
  Go to https://github.com/settings/applications
 and register an application to get your:
-Client ID #
-Client Secret #
+Client ID number and 
+Client Secret number.
 
 In VisualStuio Solution Explorer
-Create a class file in the Models folder and name it 'EnvironmentVariables.cs'
+create a class file in the Models folder and name it 'EnvironmentVariables.cs.'
 
-add:
+* add:
+
+```
 	public class EnvironmentVariables
     {
         public static string ClientId = "{{your Client ID #}}";
         public static string ClientSecret = "{{your Client Secret #}}";
     }
-
+```
 Now you can run Portfolio in any modern browser.
 
 ## Technologies Used
