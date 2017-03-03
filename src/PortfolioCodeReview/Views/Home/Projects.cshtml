@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Projects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<PortfolioCodeReview.Models.Repo>
+
+<h2>Here are a few of my projects</h2>
+
+<hr />
+
+@foreach(var repo in Model)
+{
+    @Html.DisplayFor(modelItem => repo.HtmlUrl)
+}

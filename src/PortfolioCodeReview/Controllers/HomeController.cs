@@ -17,7 +17,7 @@ namespace PortfolioCodeReview.Controllers
             return View();
         }
 
-        public IActionResult GetRepos()
+        public IActionResult Projects()
         {
             var allRepos = Repo.GetRepos();
             return View(allRepos);

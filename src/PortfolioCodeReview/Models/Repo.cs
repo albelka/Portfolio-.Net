@@ -17,7 +17,7 @@ namespace PortfolioCodeReview.Models
     public static List<Repo> GetRepos()
     {
         var client = new RestClient("https://api.github.com");
-        var request = new RestRequest("users/albelka/repos?client_id=" + EnvironmentVariables.ClientId + "&client_secret=" + EnvironmentVariables.ClientSecret, Method.GET);
+        var request = new RestRequest("search/repositories?q=user:albelka&stars:1..2&order=desc&?client_id=" + EnvironmentVariables.ClientId + "&client_secret=" + EnvironmentVariables.ClientSecret, Method.GET);
             request.AddHeader("User-Agent", "albelka");
         var response = new RestResponse();
         Task.Run(async () =>
@@ -25,8 +25,8 @@ namespace PortfolioCodeReview.Models
             response = await GetResponseContentAsync(client, request) as RestResponse;
         }).Wait();
             Debug.WriteLine(response);
-       // JObject[] jsonResponse = JsonConvert.DeserializeObject<JObject[]>(response.Content);
-            var repoList = JsonConvert.DeserializeObject<List<Repo>>(response.Content);
+        JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(response.Content);
+        var repoList = JsonConvert.DeserializeObject<List<Repo>>(response.Content);
         return repoList;
 
     }
