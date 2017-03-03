@@ -14,12 +14,12 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <nav>
+    <nav class="brown lighten-4">
         <div class="nav-wrapper">
             <a href="/Home/Index" class="brand-logo">Home</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/Home/About">About</a></li>
-                <li><a href="/Home/Projects">Projects</a></li>
+                <li>@Html.ActionLink("Projects", "Projects")</li>
+                <li>@Html.ActionLink("About Me", "About")</li>
             </ul>
         </div>
     </nav>

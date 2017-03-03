@@ -1,0 +1,6 @@
+﻿body {
+    background-image: url("../img/giraffe.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

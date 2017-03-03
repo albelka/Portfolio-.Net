@@ -14,8 +14,9 @@ namespace PortfolioCodeReview.Models
     public class Repo
     {
         public string HtmlUrl { get; set; }
+        public string Name { get; set; }
 
-    public static List<JObject> GetRepos()
+        public static List<JObject> GetRepos()
     {
         var client = new RestClient("https://api.github.com");
         var request = new RestRequest("search/repositories?q=user:albelka&stars:1..2&order=desc&?client_id=" + EnvironmentVariables.ClientId + "&client_secret=" + EnvironmentVariables.ClientSecret, Method.GET);

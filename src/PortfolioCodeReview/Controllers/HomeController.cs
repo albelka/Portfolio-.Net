@@ -17,10 +17,24 @@ namespace PortfolioCodeReview.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+
         public IActionResult Projects()
         {
             var allRepos = Repo.GetRepos();
-            return View(allRepos);
+            List<Repo> threeRepos = new List<Repo>() { };
+            foreach (var project in allRepos)
+            {
+                Repo newRepo = new Repo();
+                newRepo.Name = project["name"].ToString();
+                newRepo.HtmlUrl = project["html_url"].ToString();
+                threeRepos.Add(newRepo);
+            }
+            var firstThree = threeRepos.Take(3);
+            return View(firstThree);
         }
     }
 }

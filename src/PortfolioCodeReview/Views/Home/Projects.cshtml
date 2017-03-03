@@ -5,11 +5,25 @@
 
 @model IEnumerable<PortfolioCodeReview.Models.Repo>
 
-<h2>Here are a few of my projects</h2>
 
-<hr />
 
 @foreach(var repo in Model)
-{
-    @Html.DisplayFor(modelItem => repo.HtmlUrl)
+{ 
+    <div class="row">
+        <div class="col m12">
+            <div class="col s12 m7">
+                <h2 class="header">@Html.DisplayFor(modelItem => repo.Name)</h2>
+                <div class="card horizontal">
+                    @*<div class="card-image">
+                        <img src="@Image">
+                    </div>*@
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <p>@Html.DisplayFor(modelItem => repo.HtmlUrl)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 }
