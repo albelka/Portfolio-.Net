@@ -1,6 +1,14 @@
 ﻿body {
-    background-image: url("../img/giraffe.jpg");
+    /*background-image: url("../img/giraffe.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
+}
+
+.about {
+    background-image: url("../img/giraffe.jpg");
+    background-attachment: fixed;
+    background-size: 1000px;
+    background-repeat: no-repeat;
+    height: 500px;
 }
