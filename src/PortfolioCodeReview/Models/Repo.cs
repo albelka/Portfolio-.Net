@@ -18,15 +18,15 @@ namespace PortfolioCodeReview.Models
     {
         var client = new RestClient("https://api.github.com");
         var request = new RestRequest("users/albelka/repos?client_id=" + EnvironmentVariables.ClientId + "&client_secret=" + EnvironmentVariables.ClientSecret, Method.GET);
-        client.Authenticator = new HttpBasicAuthenticator("7e350a08871ce1bc6251", "7c5f73d8c016e87edf8e8acd5cb203df2e5eaa0f");
+            request.AddHeader("User-Agent", "albelka");
         var response = new RestResponse();
         Task.Run(async () =>
         {
             response = await GetResponseContentAsync(client, request) as RestResponse;
         }).Wait();
             Debug.WriteLine(response);
-        JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(response.Content);
-        var repoList = JsonConvert.DeserializeObject<List<Repo>>(jsonResponse["html_url"].ToString());
+       // JObject[] jsonResponse = JsonConvert.DeserializeObject<JObject[]>(response.Content);
+            var repoList = JsonConvert.DeserializeObject<List<Repo>>(response.Content);
         return repoList;
 
     }
